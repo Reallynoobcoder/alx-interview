@@ -7,14 +7,13 @@ returns true if all boxex are unlcok and false if not
 
 def canUnlockAll(boxes):
     """return trure if all boxes unlocked"""
-    unlocked_boxes = set([0])
+    unlocked_boxes = [0]
+    keys = list(boxes[0])
 
-    boxes_to_check = [0]
-
-    for current_box in boxes_to_check:
-        for key in boxes[current_box]:
-            if key not in unlocked_boxes:
-                unlocked_boxes.add(key)
-                boxes_to_check.append(key)
+    while keys:
+        key = keys.pop()
+        if key < len(boxes) and key not in unlocked_boxes:
+            unlocked_boxes.append(key)
+            keys.extend(boxes[key])
 
     return len(unlocked_boxes) == len(boxes)
