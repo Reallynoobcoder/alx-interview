@@ -2,6 +2,7 @@
 """
 script that reads stdin line by line and computes metrics.
 """
+
 from sys import stdin
 import random
 from time import sleep
@@ -30,6 +31,7 @@ try:
             print()
 
 except KeyboardInterrupt:
-    print(f"File size: {file_size}")
-    for code, count in sorted(status_codes.items()):
-        print(f"{code}: {count}")
+    print("File size: {}".format(file_size))
+    for code, num in status_codes.items():
+        if num:
+            print("{}: {}".format(code, num))
